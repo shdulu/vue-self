@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/dist/vue.js"></script>
+    <script>
+      Vue.mixin({ // 静态方法
+        a: 1,
+        beforeCreate() {
+          // 组件创建之前
+          console.log("beforeC reate---mixin1");
+        },
+        created() {
+          // 数据已经被劫持了
+          console.log("created---mixin1");
+        },
+      });
+      Vue.mixin({ // 静态方法
+        b: 2,
+        beforeCreate() {
+          // 组件创建之前
+          console.log("beforeC reate---mixin2");
+        },
+        created() {
+          // 数据已经被劫持了
+          console.log("created---mixin2");
+        },
+      });
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        },
+        beforeCreate() {
+          // 组件创建之前
+          console.log("beforeCreate");
+        },
+        created() {
+          // 数据已经被劫持了
+          console.log("created");
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

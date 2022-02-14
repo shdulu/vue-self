@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-button></my-button>
+      <my-button></my-button>
+    </div>
+    <script src="/dist/vue.js"></script>
+    <script>
+      Vue.component("my-button", {
+        // Vue.component => Vue.extend方法 => 生成子类的构造函数
+        // 如果是组件添加了init hook() componentOptions => Ctor
+        // 创建真实节点时 会调用 init 钩子， new Ctor().$mount() 内部会再给组件添加一个watcher, 会将渲染的节点放到当前实例上，并返回
+        template: "<button>按钮</button>",
+      });
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        },
+        methods: {},
+        components: {
+          "my-button": {
+            template: "<button>内部按钮</button>",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

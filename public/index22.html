@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="/dist/vue.js"></script>
+    <!--
+        模板编译原理 AST语法树 先标识出html -> js 语法 
+        tempalte => ast语法树 => render 函数 => 虚拟dom
+        new Vue => new Watcher =>
+
+
+        1. 需要将模板 变成一个render 方法 render() {return_l(3, _c('li', {}, name))} 
+        2. 需要去当前的实例上取值 with
+        3. 虚拟dom => 对象 可以描述dom结构 (diff算法) 
+        4. 生成一个真实dom结构渲染到页面中
+    -->
+    <div id="app">
+      <span style="color: red">{{name}}</span>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {
+            name: "shdulu",
+          };
+        },
+        methods: {},
+      });
+      // vm.name = "hahahah"; // 希望用户数据更新 自动更新视图，不用手动触发，所以要做依赖收集
+    </script>
+  </body>
+</html>
